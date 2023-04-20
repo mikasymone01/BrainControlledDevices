@@ -1,9 +1,12 @@
 import cortex
 from cortex import Cortex
+import time
+import eegControl
+import threading
 
 APP_CLIENT_ID = "aIdV6N9RummnH3JlrWFbXlHa5wJp4VO8pCoGhNc0"
 APP_CLIENT_SECRET ="lszyfjaAzc3S2YsJJN018RiKuSgFHdCodja6RojyOXEpBInhHs3D8tstmINq14vKOGtkZfA92Sm0FbqgAXAr6SVczPxgxB3rimcVxelNSCUpm5T0iOmDONbGGWA76SeK"
-
+shut_down = False
 
 class BCI_Controller():
 
@@ -60,6 +63,7 @@ class BCI_Controller():
         -------
         None
         """
+
         self.c.get_mental_command_active_action(profile_name)
 
     def on_create_session_done(self, *args, **kwargs):
@@ -86,11 +90,14 @@ class BCI_Controller():
             stream = ['com']
             self.c.sub_request(stream)
             self.get_active_action(self.profile_name)
+            eegControl.intialize()
+
         else:
             print('The profile ' + self.profile_name + ' is unloaded')
             self.profile_name = ''
 
     def on_new_com_data(self, *args, **kwargs):
+        global shut_down
         """
         To handle mental command data emitted from Cortex
 
@@ -99,12 +106,33 @@ class BCI_Controller():
         data: dictionary
              the format such as {'action': 'neutral', 'power': 0.0, 'time': 1590736942.8479}
         """
-        data = kwargs.get('data')
-        print('mc data: {}'.format(data))
+        if shut_down == False:
+            data = kwargs.get('data')
+            if data['action'] == 'lift':
+                #eegControl.takeOff()
+                eegControl.moveForward()
+                print("launching")
+            elif data['action'] == 'drop':
+                #eegControl.land()
+                eegControl.moveBackward()
+                print("landing")
+            elif data['action'] == 'left':
+               # eegControl.moveLeft()
+                print("Turning left")
+            elif data['action'] == 'right':
+               # eegControl.moveRight()
+                print("Turning right")
+            else:
+                print('neutral')
+
+
+
+       # print('mc data: {}'.format(data))
 
     def on_get_mc_active_action_done(self, *args, **kwargs):
         data = kwargs.get('data')
         print('on_get_mc_active_action_done: {}'.format(data))
+        eegControl.takeOff()
         # self.get_sensitivity(self.profile_name)
 
     def on_inform_error(self, *args, **kwargs):
@@ -135,16 +163,21 @@ class BCI_Controller():
         self.c.setup_profile(profile_name, 'load')
 
 
+def landDrone():
+    global shut_down
+    eegControl.land()
+    shut_down = True
 
 
 def main():
     # Please fill your application clientId and clientSecret before running script
 
     l = BCI_Controller(APP_CLIENT_ID, APP_CLIENT_SECRET)
-
-    trained_profile_name = 'Mikala'  # Please set a trained profile name here
-    l.start(trained_profile_name)
-
+    trained_profile_name = 'Ricky'  # Please set a trained profile name here
+    time.sleep(5)
+    threading.Thread(l.start(trained_profile_name)).start()
+    time.sleep(8)
+    threading.Thread(eegControl.land()).start()
 
 
 if __name__ == '__main__':

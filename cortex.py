@@ -7,6 +7,7 @@ import sys
 from pydispatch import Dispatcher
 import warnings
 import threading
+import random
 
 # define request id
 QUERY_HEADSET_ID = 1
@@ -330,6 +331,7 @@ class Cortex(Dispatcher):
             com_data['power'] = result_dic['com'][1]
             com_data['time'] = result_dic['time']
             self.emit('new_com_data', data=com_data)
+
         elif result_dic.get('fac') != None:
             fe_data = {}
             fe_data['eyeAct'] = result_dic['fac'][0]  # eye action
@@ -374,8 +376,11 @@ class Cortex(Dispatcher):
             print(result_dic)
 
     def on_message(self, *args):
+        rand_num = random.randint(1,5)
         recv_dic = json.loads(args[1])
         if 'sid' in recv_dic:
+            #Added a random chance that the data will be accepted to slow down the intake rate
+           #if rand_num == 5:
             self.handle_stream_data(recv_dic)
         elif 'result' in recv_dic:
             self.handle_result(recv_dic)
