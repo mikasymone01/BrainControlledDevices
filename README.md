@@ -9,7 +9,7 @@ This project uses electroencephalogram (EEG) technology to track brain signals. 
 * Python
 * DJITello library
 
-## Video Demo
+## Video Demos
 
 [![Takeoff Demo](https://i.imgur.com/QFrzKHd.png)](https://youtube.com/shorts/oqsKRUVTpd4 "Video Title")
 
