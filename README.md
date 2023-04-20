@@ -12,7 +12,5 @@ This project uses electroencephalogram (EEG) technology to track brain signals. 
 ## Video Demo
 
 [![Now in Android: 55]          // Title
-(https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg)] // Thumbnail
-(https://youtube.com/shorts/oqsKRUVTpd4?feature=share "Now in Android: 55")
-
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtube.com/shorts/oqsKRUVTpd4"Video Title")
 
