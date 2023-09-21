@@ -109,19 +109,17 @@ class BCI_Controller():
         if shut_down == False:
             data = kwargs.get('data')
             if data['action'] == 'lift':
-                #eegControl.takeOff()
-                eegControl.moveForward()
+                eegControl.takeOff()
                 print("launching")
             elif data['action'] == 'drop':
-                #eegControl.land()
-                eegControl.moveBackward()
+                eegControl.land()
                 print("landing")
-            elif data['action'] == 'left':
-               # eegControl.moveLeft()
-                print("Turning left")
-            elif data['action'] == 'right':
-               # eegControl.moveRight()
-                print("Turning right")
+            elif data['action'] == 'push':
+                eegControl.moveForward()
+                print("Moving forward")
+            elif data['action'] == 'pull':
+                eegControl.moveBackward()
+                print("Moving backward")
             else:
                 print('neutral')
 
@@ -132,7 +130,7 @@ class BCI_Controller():
     def on_get_mc_active_action_done(self, *args, **kwargs):
         data = kwargs.get('data')
         print('on_get_mc_active_action_done: {}'.format(data))
-        eegControl.takeOff()
+        # eegControl.takeOff()
         # self.get_sensitivity(self.profile_name)
 
     def on_inform_error(self, *args, **kwargs):
@@ -163,10 +161,10 @@ class BCI_Controller():
         self.c.setup_profile(profile_name, 'load')
 
 
-def landDrone():
-    global shut_down
-    eegControl.land()
-    shut_down = True
+# def landDrone():
+#     global shut_down
+#     eegControl.land()
+#     shut_down = True
 
 
 def main():
@@ -174,10 +172,10 @@ def main():
 
     l = BCI_Controller(APP_CLIENT_ID, APP_CLIENT_SECRET)
     trained_profile_name = 'Ricky'  # Please set a trained profile name here
-    time.sleep(5)
+    # time.sleep(5)
     threading.Thread(l.start(trained_profile_name)).start()
-    time.sleep(8)
-    threading.Thread(eegControl.land()).start()
+    # time.sleep(8)
+    # threading.Thread(eegControl.land()).start()
 
 
 if __name__ == '__main__':
