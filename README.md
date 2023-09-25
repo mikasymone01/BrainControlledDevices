@@ -1,6 +1,6 @@
 # Brain-Controlled Drone
 ## Overview
-This project uses electroencephalogram (EEG) technology to track brain signals. We uses these brain signals to send commands to the Tello Drone to control it. This is a senior capstone project for Spring-Fall 2023.
+This project uses electroencephalogram (EEG) technology to track brain signals. We use these brain signals to send commands to the Tello Drone to control it. This is a senior capstone project for Spring-Fall 2023. Currently, we are looking to implement a way for the EEG to communicate with a GO1 Unitree Robot Dog
 
 ## Equipment Used
 * EMOTIV EPOCHx headset
