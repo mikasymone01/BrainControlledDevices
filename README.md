@@ -1,13 +1,21 @@
-# Brain-Controlled Drone
+# Brain-Controlled Devices
 ## Overview
-This project uses electroencephalogram (EEG) technology to track brain signals. We use these brain signals to send commands to the Tello Drone to control it. This is a senior capstone project for Spring-Fall 2023. Currently, we are looking to implement a way for the EEG to communicate with a GO1 Unitree Robot Dog
+The neurons in the human brain send commands in the form of brain waves to other parts of the body to control them. Electroencephalography (EEG) technology allows humans to read and interpret those brain waves and convert them into commands that computers can run. This project serves to test the current capabilities of EEG technology and shed light on its potential.
+In the first semester, we tested whether EEG commands, translated using a provided API, from an EMOTIV EEG headset would allow a user to control a Tello drone. Then, in the second semester we tested if a Unitree Go1 Robot dog could be controlled using the same EMOTIV EEG headset.  We found that EEG technology and its current capabilities were able to accomplish the needed tasks, but not without issues.
 
 ## Equipment Used
-* EMOTIV EPOCHx headset
-* Emotiv Cortex API
-* Tello Drone
 * Python
-* DJITello library
+* EMOITV app & Cortex API
+* DJTelloPy library
+* DroneBlocks Javascript code
+* JsPyBridge library
+* Windows Laptop (Any computer)
+* Tello Drone
+* Unitree Go1 Robot Dog
+* EMOTIV Epocx & Insight Helmet
+* USB Logitech Controller
+
+
 
 ## Video Demos
 
