@@ -22,5 +22,7 @@
 
 [![Drone Takeoff Demo](https://i.imgur.com/QFrzKHd.png)](https://youtube.com/shorts/oqsKRUVTpd4 "Takeoff Demo")
 [![Drone Movement Demo](https://i.imgur.com/IThEtBA.png)](https://youtube.com/shorts/L60n676oXj4?feature=share "Movement Demo")
+[![Drone Logitech Controller Demo](https://i.imgur.com/y8vPC5N.png)](https://www.youtube.com/watch?v=IdkG0U9IA1M)
 
 [![Drone Movement Demo](https://i.imgur.com/5NoXzMt.jpeg)](https://youtu.be/Hp4Ma-KOMEM)
+[![Logitech Controller & Robot Dog Demo](https://i.imgur.com/ius5X3u.jpeg)](https://www.youtube.com/watch?v=ujoDbyLi9Y0)
